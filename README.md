@@ -98,15 +98,44 @@ Range: 192.168.6.11-192.168.6.80
 alias l3='/usr/local/bin/kubectl-vsphere login --vsphere-username administrator@vsphere.local --server=https://192.168.6.129 --insecure-skip-tls-verify'
 
 alias k1='kubectl config use-context namespace1000'
-
-
-
-
 ```
 
 **Create TKG guest cluster**
 
+```
+[root@localhost ~]# cat tanzu-tkc.yaml
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkc-01
+  namespace: namespace1000
+spec:
+  distribution:
+    version: v1.17.8+vmware.1-tkg.1.5417466
+  settings:
+    network:
+      cni:
+        name: antrea
+      pods:
+        cidrBlocks:
+        - 193.0.2.0/16
+      serviceDomain: managedcluster.local
+      services:
+        cidrBlocks:
+        - 195.51.100.0/12
+  topology:
+    controlPlane:
+      class: best-effort-xsmall
+      count: 1
+      storageClass: tanzu-gold-storage-policy
+    workers:
+      class: best-effort-xsmall
+      count: 2
+      storageClass: tanzu-gold-storage-policy
+```
+
 **Log onto TKG guest cluster**
+
 ```
 alias l31='kubectl vsphere login --server 192.168.6.129 \
                 --vsphere-username administrator@vsphere.local \
@@ -115,13 +144,86 @@ alias l31='kubectl vsphere login --server 192.168.6.129 \
                 --insecure-skip-tls-verify'
 
 alias k31='kubectl config use-context tkc-01'
-
 ```
 
+**Creare cluster role binding**
 
+```
+[root@localhost ~]# cat tanzu-authorize-psp-for-gc-service-accounts.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: psp:privileged
+rules:
+- apiGroups: ['policy']
+  resources: ['podsecuritypolicies']
+  verbs:     ['use']
+  resourceNames:
+  - vmware-system-privileged
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: all:psp:privileged
+roleRef:
+  kind: ClusterRole
+  name: psp:privileged
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: Group
+  name: system:serviceaccounts
+  apiGroup: rbac.authorization.k8s.io
+```
 
+```
+kubectl apply -f ./tanzu-authorize-psp-for-gc-service-accounts.yaml
+```
 **Create test POD in guest cluster**
 
+```
+[root@localhost ~]# cat nginx-lbsvcGA.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: nginx
+  name: nginx
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: nginx
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+```
+
+```
+kubectl apply -f ./nginx-lbsvcGA.yaml
+
+kubectl get pods
+kubectl get svc
+kubectl get events
+```
 
 
 
