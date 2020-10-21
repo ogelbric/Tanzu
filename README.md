@@ -1,4 +1,4 @@
-#TANZU
+# TANZU
 
 **Automated deployment of William Lams power shell script (https://github.com/lamw/vsphere-with-tanzu-basic-automated-lab-deployment)
 
