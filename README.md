@@ -7,8 +7,8 @@ VMware vCenter 7.0 update 1 Guest cluster depoloyment with HAproxy as load balan
 **The nested network layout:**
 
 ```
-192.168.4.x  Gateway: 192.168.4.10
-192.168.6.x  Gateway: 192.168.6.10
+192.168.4.x  Gateway: 192.168.4.1
+192.168.6.x  Gateway: 192.168.6.1
 DNS 10.118.87.50
 NTP 10.128.152.81
 
