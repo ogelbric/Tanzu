@@ -237,5 +237,12 @@ kubectl get events
 https://github.com/ogelbric/TKG-Patch
 ```
 
+**See also Tanzu Service Mesh**
+
+```
+https://github.com/ogelbric/TSM/blob/master/README.md
+```
+
+
 
 
