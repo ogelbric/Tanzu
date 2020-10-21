@@ -16,6 +16,8 @@ HAproxy IP 192.168.4.2 / 192.168.6.2
 Ingress 192.168.6.128/26
 ```
 
+**The script with 192.168.4.x and 192.168.6.x ranges) 
+![GitHub](vsphere_basic_with_HA_Proxy(96GWat1).ps1)
 
 
 
