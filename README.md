@@ -94,9 +94,31 @@ Range: 192.168.6.11-192.168.6.80
 
 **Log onto supervisor cluster**
 
+```
+alias l3='/usr/local/bin/kubectl-vsphere login --vsphere-username administrator@vsphere.local --server=https://192.168.6.129 --insecure-skip-tls-verify'
+
+alias k1='kubectl config use-context namespace1000'
+
+
+
+
+```
+
 **Create TKG guest cluster**
 
 **Log onto TKG guest cluster**
+```
+alias l31='kubectl vsphere login --server 192.168.6.129 \
+                --vsphere-username administrator@vsphere.local \
+                --managed-cluster-namespace namespace1000 \
+                --managed-cluster-name tkc-01 \
+                --insecure-skip-tls-verify'
+
+alias k31='kubectl config use-context tkc-01'
+
+```
+
+
 
 **Create test POD in guest cluster**
 
