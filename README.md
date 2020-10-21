@@ -50,7 +50,7 @@ tanzu-haproxy-1
 wcp/VMware1!
 192.168.6.129-192.168.6.190
 
-ssh root@192.168.2.4
+ssh root@192.168.4.2
 root@tanzu-haproxy-1 [ ~ ]# cat /etc/haproxy/ca.crt
 -----BEGIN CERTIFICATE-----
 MIIDnTCCAoWgAwIBAgIJAJLoLA+LcOoJMA0GCSqGSIb3DQEBBQUAMGwxCzAJBgNV
