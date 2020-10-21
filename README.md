@@ -1,5 +1,5 @@
 # TANZU
-VMware vCenter 7.0 update 1 Guest cluster depoloyment with HAproxy as load balancer
+VMware vCenter 7.0 update 1 Guest cluster deployment with HAproxy as load balancer
 
 **The base is William Lams power shell script (https://github.com/lamw/vsphere-with-tanzu-basic-automated-lab-deployment)**
 
