@@ -1,9 +1,9 @@
 # TANZU
 
-**Automated deployment of William Lams power shell script (https://github.com/lamw/vsphere-with-tanzu-basic-automated-lab-deployment)
+** Automated deployment of William Lams power shell script (https://github.com/lamw/vsphere-with-tanzu-basic-automated-lab-deployment)
 
 
-**The nested network layout: 
+** The nested network layout: 
 
 ```
 192.168.4.x  Gateway: 192.168.4.10
