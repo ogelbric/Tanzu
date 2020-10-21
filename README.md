@@ -134,6 +134,12 @@ spec:
       storageClass: tanzu-gold-storage-policy
 ```
 
+```
+kubectl apply -f ./tanzu-tkc.yaml
+kubectl get tanzukubernetesclusters
+
+```
+
 **Log onto TKG guest cluster**
 
 ```
@@ -225,9 +231,11 @@ kubectl get svc
 kubectl get events
 ```
 
+**See also patching of clusters**
 
-
-
+```
+https://github.com/ogelbric/TKG-Patch
+```
 
 
 
