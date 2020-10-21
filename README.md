@@ -1,6 +1,7 @@
 # TANZU
+VMware vCenter 7.0 update 1 Guest cluster depoloyment with HAproxy as load balancer
 
-**Automated deployment of William Lams power shell script (https://github.com/lamw/vsphere-with-tanzu-basic-automated-lab-deployment)**
+**The base is William Lams power shell script (https://github.com/lamw/vsphere-with-tanzu-basic-automated-lab-deployment)**
 
 
 **The nested network layout:**
