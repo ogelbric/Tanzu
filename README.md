@@ -9,7 +9,7 @@ VMware vCenter 7.0 update 1 Guest cluster depoloyment with HAproxy as load balan
 ```
 192.168.4.x  Gateway: 192.168.4.1
 192.168.6.x  Gateway: 192.168.6.1
-DNS 10.118.87.50
+DNS 10.197.96.7
 NTP 10.128.152.81
 
 HAproxy IP 192.168.4.2 / 192.168.6.2
@@ -84,7 +84,7 @@ DNS: 10.197.96.7
 Dom: lab.local
 NTP: 10.128.152.81
 -
-DNS: 10.118.87.50
+DNS: 10.197.96.7
 Workload-Network
 GW: 192.168.6.1
 Mask: 255.255.255.0
