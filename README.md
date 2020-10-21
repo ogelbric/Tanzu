@@ -92,6 +92,15 @@ Range: 192.168.6.11-192.168.6.80
 
 ```
 
+**Log onto supervisor cluster**
+
+**Create TKG guest cluster**
+
+**Log onto TKG guest cluster**
+
+**Create test POD in guest cluster**
+
+
 
 
 
